@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/commander.css">
+    <link rel="shortcut icon" href="assets/icon.png">
+    <title>COMMANDE - pokee.</title>
+  </head>
+  <body>
+    <!--Choix du nombre d'ingrédients-->
+    <div class="choixnbringredients" id="choixnbringredients">
+      <h2>Nombre d'ingredients de votre pokee : <span id="nbringredients">1</span></h2>
+      <div class="rangenbringredients">
+          <input type="range" value="1" min="1" max="20" onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)"></input>
+          <script type="text/javascript">
+            function rangeSlide(value) {
+                document.getElementById("nbringredients").innerHTML=value;
+            }
+        </script>
+      </div>
+      <input type="submit" id="valider" name="valider" value="Valider" onclick="valider()">
+      <script>
+        /* script permettant d'enlever le choix du nbr une fois celui ci fait */
+        function valider() {
+          document.getElementById("choixnbringredients").style.animation="valider 1s ease";
+          document.getElementById("choixnbringredients").style.opacity="0";
+          document.getElementById("choixnbringredients").style.pointerEvents="none";
+          document.getElementById("main").style.visibility="visible";
+          document.getElementById("main").style.animation="chargement 1.5s ease 0.2s backwards";
+          document.getElementsByTagName("body")[0].style.overflowY="auto";
+          document.getElementById("nombreingredientschoisi").innerHTML=document.getElementById("nbringredients").innerHTML;
+        }
+      </script>
+    </div>
+
+    <!--Composition du poke-->
+    <div class="main" id="main">
+      <h1>my pokee</h1>
+      <form id="poke" name="poke" action="livraison.html">
+        <script type="text/javascript" src="js/commander.js"></script>
+        <div id="ingredientspoke">
+
+          <div class="container" id="base">
+            <div class="select-btn">
+              <img src="assets/base.png">
+              <p>Base</p>
+              <span>+</span>
+            </div>
+            <ul class="list-items">
+                <li class="items" onclick="ajouterpokee(this);base(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/salade.png">
+                  <span class="item-text" id="salade">Salade</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this);base(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/rizsushi.png">
+                  <span class="item-text" id="rizsushi">Riz Sushi</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this);base(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/riznoir.png">
+                  <span class="item-text" id="riznoir">Riz Noir</span>
+                </li>
+            </ul>
+          </div>
+
+          <div class="container" id="taille">
+            <div class="select-btn">
+              <img src="assets/taille.png">
+              <p>Taille</p>
+              <span>+</span>
+            </div>
+            <ul class="list-items">
+                <li class="items" onclick="ajouterpokee(this);taille(this)">
+                    <span class="checkbox"></span>
+                    <img src="assets/petit.png">
+                    <span class="item-text" id="petit">petit</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this);taille(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/moyen.png">
+                  <span class="item-text" id="moyen">moyen</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this);taille(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/grand.png">
+                  <span class="item-text" id="grand">grand</span>
+                </li>
+            </ul>
+          </div>
+
+          <div class="container" id="accompagnement">
+            <div class="select-btn">
+              <img src="assets/accompagnement.png">
+              <p>Accompagnement</p>
+              <span>+</span>
+            </div>
+            <ul class="list-items">
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/saumon.png">
+                  <span class="item-text" id="saumon">saumon</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/saumonhawaien.png">
+                  <span class="item-text" id="saumonhawaien">saumon hawaien</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/falafels.png">
+                  <span class="item-text" id="falafels">falafels</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/pouletcroustillant.png">
+                  <span class="item-text" id="pouletcroustillant">poulet croustillant</span>
+                </li>
+            </ul>
+          </div>
+
+          <div class="container" id="garniture">
+            <div class="select-btn">
+              <img src="assets/garniture.png">
+              <p>Garniture</p>
+              <span>+</span>
+            </div>
+            <ul class="list-items">
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/ananas.png">
+                  <span class="item-text" id="ananas">ananas</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/avocat.png">
+                  <span class="item-text" id="avocat">avocat</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/citron.png">
+                  <span class="item-text" id="citron">citron</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/mangue.png">
+                  <span class="item-text" id="mangue">mangue</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/carotte.png">
+                  <span class="item-text" id="carotte">carotte</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/oignons.png">
+                  <span class="item-text" id="oignons">oignons</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/radis.png">
+                  <span class="item-text" id="radis">radis</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/poivron.png">
+                  <span class="item-text" id="poivron">poivron</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/ciboulette.png">
+                  <span class="item-text" id="ciboulette">ciboulette</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/coriandre.png">
+                  <span class="item-text" id="coriandre">coriandre</span>
+                </li>
+            </ul>
+          </div>
+
+          <div class="container" id="sauce">
+            <div class="select-btn">
+              <img src="assets/sauce.png">
+              <p>Sauce</p>
+              <span>+</span>
+            </div>
+            <ul class="list-items">
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/sojasalee.png">
+                  <span class="item-text" id="sojasalee">soja salee</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/sojasucree.png">
+                  <span class="item-text" id="sojasucree">soja sucree</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/tropicale.png">
+                  <span class="item-text" id="tropicale">tropicale</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/teriyaki.png">
+                  <span class="item-text" id="teriyaki">teriyaki</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/gochujang.png">
+                  <span class="item-text" id="gochujang">gochujang</span>
+                </li>
+                <li class="items" onclick="ajouterpokee(this)">
+                  <span class="checkbox"></span>
+                  <img src="assets/tonkatsu.png">
+                  <span class="item-text" id="tonkatsu">tonkatsu</span>
+                </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!--MY POKEE-->
+        <div id="mypokee">
+          <div class="container" id="mypoke">
+            <div class="select-btn">
+              <img src="assets/mypokee.png">
+              <p><span id="nbringredientsselectionne">0</span> / <span id="nombreingredientschoisi"></span> ingredients</p>
+              <span>+</span>
+            </div>
+            <ul class="list-items" id="ingredientsmypoke">
+                <li class="items">
+                  <img id="imagetaille" src="assets/empty.png">
+                  <span class="tailleselectionee" id="tailleselectionee">selectioner taille</span>
+                </li>
+                <input type="hidden" id="taillet" name="taille" value="">
+                <li class="items">
+                  <img id="imagebase" src="assets/empty.png">
+                  <span class="baseselectionee" id="baseselectionee">selectioner base</span>
+                </li>
+                <input type="hidden" id="baseb" name="base" value="">
+            </ul>
+            <input type="button" id="commander" name="commander" value="Commander" onclick="alert(`Veuillez sélectionner une base, une taille, et le bon nombre d'ingrédients.`)">
+          </div>
+          <script>   
+            /* script permettant d'ouvrir et de fermer les menus déroulants */ 
+            let items = document.getElementsByClassName("select-btn");
+            for (let i = 0; i < items.length; i++) {
+              items[i].addEventListener("click", () => {
+                items[i].classList.toggle("open");
+                /* on ajoute des margin pour que les menus ne se supperposent pas sur d'autres elements */
+                items[i].parentElement.style.marginBottom=items[i].nextElementSibling.clientHeight+48+"px";
+                /* change le plus en moins si le menu est ouvert */
+                if (items[i].lastChild.previousSibling.innerHTML=="+") {
+                  items[i].lastChild.previousSibling.innerHTML="-";
+                }
+                else {
+                  items[i].lastChild.previousSibling.innerHTML="+";
+                }
+              });
+            }
+  
+            /* permet de cocher/decocher les items et d'augementer/diminuer le nombre d'ingrédients sélectionnés (la base et la taille ne comptent pas dans le nbr d'ingrédients) */
+            document.querySelectorAll(".items").forEach(item => {
+              item.addEventListener("click", () => {
+                if (item.parentElement.parentElement.id!="taille" && item.parentElement.parentElement.id!="base") {
+                  item.classList.toggle("checked");
+                }
+                else {  //Si on est dans la base ou la taille, on ne peut selectionner qu'un seul element à la fois 
+                  for (let k = 0; k < 3; k++) {
+                    if (item.parentElement.children[k].classList[1]=="checked") {
+                      item.parentElement.children[k].classList.remove("checked");
+                    }
+                  }
+                  item.classList.toggle("checked");
+                }
+              });
+            })
+          </script>
+        </div>
+      </form>
+    </div>
+    <script>
+      /* Si la page est actualisée, on remonte tout en haut (sinon quand on refresh elle ne remonte pas et on ne voit pas le choix du nombre) */
+      window.onbeforeunload = function() {
+        window.scrollTo(0, 0);
+      };
+    </script>
+  </body>
+</html>

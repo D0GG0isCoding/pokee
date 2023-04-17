@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/resume.css">
+    <link rel="shortcut icon" href="assets/icon.png">
+    <title>RESUME - pokee.</title>
+  </head>
+  <body>
+    <div class="main">
+      <h1>RESUME</h1>
+      <div class="container" id="informationslivraison">
+        <div class="select-btn">
+          <img src="assets/malivraison.png">
+          <p>ma livraison</p>
+          <span>+</span>
+        </div>
+        <ul class="list-items">
+          <li class="items">
+            <span class="item-text" id="Nom"></span>
+          </li>
+          <li class="items">
+            <span class="item-text" id="Prenom"></span>
+          </li>
+          <li class="items">
+            <span class="item-text" id="Adresse"></span>
+          </li>
+          <li class="items">
+            <span class="item-text" id="Ville"></span>
+          </li>
+          <li class="items">
+            <span class="item-text" id="Telephone"></span>
+          </li>
+        </ul>
+      </div> 
+
+      <div class="container" id="informationscommande">
+        <div class="select-btn">
+          <img src="assets/monpokee.png">
+          <p>mon pokee</p>
+          <span>+</span>
+        </div>
+        <ul class="list-items">
+          <li class="items">
+            <span class="item-text" id="Prix">Total : </span>
+          </li>
+          <li class="items">
+            <span class="item-text" id="Base">Base : </span>
+          </li>
+          <li class="items">
+            <span class="item-text" id="Taille">Taille : </span>
+          </li>
+          <li class="items">
+            <span class="item-text" id="Accompagnement">Accompagnement : <span id="prixaccompagnement"></span><br></span>
+          </li>
+          <li class="items">
+            <span class="item-text" id="Garniture">Garniture : <span id="prixgarniture"></span><br></span>
+          </li>
+          <li class="items">
+            <span class="item-text" id="Sauce">Sauce : <span id="prixsauce"></span><br></span>
+          </li>
+        </ul>
+      </div> 
+      <a href="pokee.html"><input type="button" id="recommander" name="recommander" value="J'ai encore faim !"></a>
+      <script>   
+        /* script permettant d'ouvrir et de fermer les menus déroulants */ 
+        let items = document.getElementsByClassName("select-btn");
+        for (let i = 0; i < items.length; i++) {
+          items[i].addEventListener("click", () => {
+            items[i].classList.toggle("open");
+            /* on ajoute des margin pour que les menus ne se supperposent pas sur d'autres elements */
+            items[i].parentElement.style.marginBottom=items[i].nextElementSibling.clientHeight+48+"px";
+            /* change le plus en moins si le menu est ouvert */
+            if (items[i].lastChild.previousSibling.innerHTML=="+") {
+              items[i].lastChild.previousSibling.innerHTML="-";
+            }
+            else {
+              items[i].lastChild.previousSibling.innerHTML="+";
+            }
+          });
+        }
+      </script>
+      <script type="text/javascript" src="js/resume.js"></script>
+    </div>
+  </body>
+</html>
